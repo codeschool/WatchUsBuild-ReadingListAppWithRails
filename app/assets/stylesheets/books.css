@@ -1,0 +1,10 @@
+h3 { margin-top: 0; }
+
+.rating { max-width: 97px; font-size: 1.8em; padding-top:8px; }
+.rating-5 .rating { color:#5cb85c; }
+.rating-4 .rating { color:#5cb85c; }
+.rating-3 .rating { color:#f0ad4e; }
+.rating-2 .rating { color:#d9534f; }
+.rating-1 .rating { color:#d9534f; }
+
+.col-sm-8 li { padding-bottom: 1em; }

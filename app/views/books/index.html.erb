@@ -1,31 +1,71 @@
-<h1>Listing books</h1>
+<div class="container">
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Author</th>
-      <th>Description</th>
-      <th>Amazon</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <h1>Reading List</h1>
 
-  <tbody>
-    <% @books.each do |book| %>
-      <tr class='<%= "finished" if book.finished? %>'>
-        <td><%= book.title %></td>
-        <td><%= book.author %></td>
-        <td><%= book.description %></td>
-        <td><%= book.amazon_id %></td>
-        <td><%= link_to 'Show', book %></td>
-        <td><%= link_to 'Edit', edit_book_path(book) %></td>
-        <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <ol class="breadcrumb">
+    <li class="active">
+      Books
+    </li>
+  </ol>
 
-<br>
+  <div class='row'>
+    <div class='col-sm-12'>
+      <p>
+        <form>
+          <legend>Search</legend>
+          <div class='col-xs-4'>
+            <input type='text' class='form-control' value='<%= params[:keyword] %>' name='keyword' placeholder='Keyword' >
+          </div>
+        </form>
+      </p>
+      <!--<p class='pull-right'>
+        <a href='#' id='show-form' class='btn btn-primary'>New Book Form</a>
+      </p>-->
+    </div>
+  </div>
 
-<%= link_to 'New Book', new_book_path %>
+  <hr>
+
+  <div class="row">
+    <div class="col-sm-8">
+      <ul class="list-unstyled">
+
+        <% @books.each do |book| %>
+          <li class="row rating-<%= book.rating %>">
+            <div class="col-sm-3">
+              <a href="#" target="_blank">
+                <%= image_from_amazon(book.amazon_id) %>
+              </a>
+              <p class="text-center rating"><strong><%= book.rating %></strong>/5</p>
+            </div>
+
+            <div class="col-sm-9">
+              <h3><a href="#"><%= book.title %></a></h3>
+              <p class="text-muted"><em>Written by <%= book.author %></em></p>
+
+              <div>
+                <p>
+                  <%= book.description %>
+                </p>
+              </div>
+              <span>
+                <%= link_to 'Genre', '#', class: 'label label-primary' %>
+              </span>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="col-sm-4">
+      <h2>Genres</h2>
+      <ul class="list-unstyled">
+        <li>
+          <a href='#' class='label label-primary'>Genre #1</a>
+        </li>
+        <li>
+          <a href='#' class='label label-primary'>Genre #2</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
