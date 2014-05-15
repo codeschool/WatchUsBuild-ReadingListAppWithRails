@@ -8,3 +8,7 @@ h3 { margin-top: 0; }
 .rating-1 .rating { color:#d9534f; }
 
 .col-sm-8 li { padding-bottom: 1em; }
+
+.book-form {
+  display: none;
+}
