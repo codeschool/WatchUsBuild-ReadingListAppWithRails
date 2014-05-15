@@ -1,0 +1,24 @@
+<li class="row rating-<%= book.rating %>">
+  <div class="col-sm-3">
+    <a href="#" target="_blank">
+      <%= image_from_amazon(book.amazon_id) %>
+    </a>
+    <p class="text-center rating"><strong><%= book.rating %></strong>/5</p>
+  </div>
+
+  <div class="col-sm-9">
+    <h3><a href="#"><%= book.title %></a></h3>
+    <p class="text-muted"><em>Written by <%= book.author %></em></p>
+
+    <div>
+      <p>
+        <%= book.description %>
+      </p>
+    </div>
+    <span>
+      <% book.genres.each do |genre| %>
+        <%= link_to genre.name, '#', class: 'label label-primary' %>
+      <% end %>
+    </span>
+  </div>
+</li>
