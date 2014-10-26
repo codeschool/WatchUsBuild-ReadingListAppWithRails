@@ -26,60 +26,62 @@
 
   <hr>
 
-
-  <div class='col-sm-12 book-form'>
-    <p>
-      <%= form_for(Book.new, remote: true,
-                   html: { class: 'horizontal-form' }) do |f| %>
-      <legend>New Book</legend>
-
-      <div class='col-sm-5'>
-        <div class='form-group'>
-
-          <label><strong>Genre</strong></label>
-
-          <% @genres.each do |genre| %>
-            <div class="checkbox">
-              <label>
-                <%= check_box_tag 'book[genre_ids][]', genre.id %> <%= genre.name %>
+  <div class='row'>
+    <div class='col-sm-12 book-form'>
+      <p>
+        <%= form_for(Book.new, remote: true,
+                     html: { class: 'horizontal-form' }) do |f| %>
+        <legend>New Book</legend>
+  
+        <div class='col-sm-5'>
+          <div class='form-group'>
+  
+            <label><strong>Genre</strong></label>
+  
+            <% @genres.each do |genre| %>
+              <div class="checkbox">
+                <label>
+                  <%= check_box_tag 'book[genre_ids][]', genre.id %> <%= genre.name %>
+                </label>
+              </div>
+            <% end %>
+          </div>
+  
+          <br>
+  
+          <div class='form-group'>
+            <%= f.text_field :title, class: 'form-control', placeholder: 'Title' %>
+          </div>
+          <div class='form-group'>
+            <%= f.text_field :author, class: 'form-control', placeholder: 'Author' %>
+          </div>
+          <div class='form-group'>
+            <%= f.text_field :description, class: 'form-control', placeholder: 'Description' %>
+          </div>
+          <div class='form-group'>
+            <%= f.text_field :amazon_id, class: 'form-control', placeholder: 'Amazon ID' %>
+          </div>
+  
+          <div class='form-group'>
+            <legend>Rating</legend>
+            <% (1..5).each do |rating| %>
+              <label class='radio-inline'>
+                <%= rating %><%= f.radio_button :rating, rating %>
               </label>
-            </div>
-          <% end %>
+            <% end %>
+          </div>
+  
+          <div class='form-group'>
+            <%= f.submit class: 'btn btn-primary' %>
+          </div>
         </div>
-
-        <br>
-
-        <div class='form-group'>
-          <%= f.text_field :title, class: 'form-control', placeholder: 'Title' %>
-        </div>
-        <div class='form-group'>
-          <%= f.text_field :author, class: 'form-control', placeholder: 'Author' %>
-        </div>
-        <div class='form-group'>
-          <%= f.text_field :description, class: 'form-control', placeholder: 'Description' %>
-        </div>
-        <div class='form-group'>
-          <%= f.text_field :amazon_id, class: 'form-control', placeholder: 'Amazon ID' %>
-        </div>
-
-        <div class='form-group'>
-          <legend>Rating</legend>
-          <% (1..5).each do |rating| %>
-            <label class='radio-inline'>
-              <%= rating %><%= f.radio_button :rating, rating %>
-            </label>
-          <% end %>
-        </div>
-
-        <div class='form-group'>
-          <%= f.submit class: 'btn btn-primary' %>
-        </div>
-      </div>
-      <% end %>
-    </p>
+        <% end %>
+      </p>
+    </div>
   </div>
-
-
+  
+  <hr>
+  
   <div class="row">
     <div class="col-sm-8">
       <ul class="list-unstyled book-list">
