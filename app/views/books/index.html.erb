@@ -28,9 +28,8 @@
 
   <div class='row'>
     <div class='col-sm-12 book-form'>
-      <p>
-        <%= form_for(Book.new, remote: true,
-                     html: { class: 'horizontal-form' }) do |f| %>
+      <%= form_for(Book.new, remote: true,
+                   html: { class: 'horizontal-form' }) do |f| %>
         <legend>New Book</legend>
   
         <div class='col-sm-5'>
@@ -74,9 +73,10 @@
           <div class='form-group'>
             <%= f.submit class: 'btn btn-primary' %>
           </div>
+          
         </div>
-        <% end %>
-      </p>
+        
+      <% end %>
     </div>
   </div>
   
